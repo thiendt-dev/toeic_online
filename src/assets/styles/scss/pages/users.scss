@@ -1,0 +1,75 @@
+.wrapper {
+  margin-top: 1rem;
+  border: 1px solid $color-gray;
+  border-top: 0;
+}
+
+.body {
+  padding: 0 2rem;
+}
+
+.content {
+  margin: 2rem auto;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: $color-gray;
+  align-items: center;
+
+  &__header {
+    display: flex;
+    padding: 2rem;
+    font-size: 2rem;
+    line-height: 2;
+    border-radius: 1rem;
+  }
+
+  &__icon {
+    margin-right: 2rem;
+  }
+
+  // &__title {
+  //   color: $color-blue-2;
+  // }
+
+  .add-new {
+    margin-right: 3rem;
+    cursor: pointer;
+
+    &__text {
+      color: $color-blue-2;
+    }
+  }
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+
+  &__row {
+    border: 1px solid $color-gray;
+
+    &:nth-child(even) {
+      background-color: $color-gray;
+    }
+  }
+
+  &__col {
+    &--center {
+      text-align: center;
+
+      svg {
+        display: inline;
+      }
+    }
+
+    &--fix-width {
+      width: 15%;
+    }
+
+    &--pointer {
+      cursor: pointer;
+    }
+  }
+}
