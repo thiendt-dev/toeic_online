@@ -3,8 +3,15 @@ import Header from '../../../commons/Header/index';
 import MdContacts from '../../../../node_modules/react-ionicons/lib/MdContacts';
 import MdAddCircle from '../../../../node_modules/react-ionicons/lib/MdAddCircle';
 import ListExams from './ListExams';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { reSet } from '../../../stores/actions';
 
-export default class Exams extends Component {
+class Exams extends Component {
+  handleReset = () => {
+    this.props.dispatchReset()
+  }
+  
   render() {
     return (
       <div className="my-container wrapper">
@@ -17,10 +24,10 @@ export default class Exams extends Component {
               </div>
               <p className="content__title">Quản Lý Đề Thi</p>
             </div>
-            <div className="add-new">
+            <Link to={'exam/add'} className="add-new" onClick={this.handleReset()}>
               <MdAddCircle fontSize="40px" color="#ff950e" />
               <p className="add-new__text">Thêm Mới</p>
-            </div>
+            </Link>
           </div>
           <ListExams />
         </section>
@@ -28,3 +35,7 @@ export default class Exams extends Component {
     )
   }
 }
+
+export default connect(null, {
+  dispatchReset: () => reSet(),
+})(Exams);

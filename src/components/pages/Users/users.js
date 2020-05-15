@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../../../commons/Header/index';
 import MdContacts from '../../../../node_modules/react-ionicons/lib/MdContacts';
 import MdAddCircle from '../../../../node_modules/react-ionicons/lib/MdAddCircle';
 import ListUsers from './ListUsers';
+import { reSet } from '../../../stores/actions/index';
+import { connect } from 'react-redux';
 
-export default class users extends Component {
+class Users extends Component {
+  handleReset = () => {
+    this.props.dispatchReset()
+  }
+
   render() {
     return (
       <div className="my-container wrapper">
@@ -17,10 +24,10 @@ export default class users extends Component {
               </div>
               <p className="content__title">Quản Lý Tài Khoản</p>
             </div>
-            <button className="add-new">
+            <Link to="/user/add" className="add-new" onClick={this.handleReset()}>
               <MdAddCircle fontSize="40px" color="#ff950e" />
               <p className="add-new__text">Thêm Mới</p>
-            </button>
+            </Link>
           </div>
           <ListUsers />
         </section>
@@ -28,3 +35,8 @@ export default class users extends Component {
     )
   }
 }
+
+export default connect(null, {
+  dispatchReset: () => reSet(),
+})(Users);
+
